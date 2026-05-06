@@ -2,20 +2,28 @@
 
 public class CharacterAnimations : MonoBehaviour
 {
-    public Mover Mover;
     public Animator Animator;
-    
+
+    public Mover Mover;
+
     private void Update()
     {
         if (Mover.MoveDirection != Vector2.zero)
         {
-            Animator.SetBool("IsMoving", true);
-            Animator.SetFloat("MoveX", Mover.MoveDirection.x);
-            Animator.SetFloat("MoveY", Mover.MoveDirection.y);
+            Animator.SetBool(CharacterAnimationParameter.IsMoving, true);
+            Animator.SetFloat(CharacterAnimationParameter.MoveX, Mover.MoveDirection.x);
+            Animator.SetFloat(CharacterAnimationParameter.MoveY, Mover.MoveDirection.y);
         }
         else
         {
-            Animator.SetBool("IsMoving", false);
+            Animator.SetBool(CharacterAnimationParameter.IsMoving, false);
         }
     }
+}
+
+public static class CharacterAnimationParameter
+{
+    public static readonly int MoveX = Animator.StringToHash("MoveX");
+    public static readonly int MoveY = Animator.StringToHash("MoveY");
+    public static readonly int IsMoving = Animator.StringToHash("IsMoving");
 }
