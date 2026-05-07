@@ -8,6 +8,11 @@ public class CharacterAnimations : MonoBehaviour
 
     private void Update()
     {
+        Move();
+    }
+
+    private void Move()
+    {
         if (Mover.MoveDirection != Vector2.zero)
         {
             Animator.SetBool(CharacterAnimationParameter.IsMoving, true);
